@@ -13,12 +13,14 @@
           <span class="fs-4">Fountain Pen Showcase</span>
         </a>
 
+        {% if user.is_authenticated %}
         <ul class="nav nav-pills">
           <form action="{% url 'logout' %}" method="post">
             {% csrf_token %}
             <button type="submit">Sign Out</button>
           </form>
         </ul>
+        {% endif %}
       </header>
     </div>
     <div class="container">
