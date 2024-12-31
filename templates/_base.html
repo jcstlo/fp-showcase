@@ -14,7 +14,10 @@
         </a>
 
         <ul class="nav nav-pills">
-          <li class="nav-item"><a href="#" class="nav-link">Sign Out</a></li>
+          <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit">Sign Out</button>
+          </form>
         </ul>
       </header>
     </div>
