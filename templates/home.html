@@ -1,0 +1,11 @@
+{% extends "_base.html" %}
+
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+<h2>Homepage</h2>
+<p><a href="{% url 'add_pen' %}">Add a new pen</a></p>
+<p><a href="#">Profile</a></p>
+<p><a href="#">See list of pens</a></p>
+<p><a href="#">Log Out</a></p>
+{% endblock content %}
