@@ -1,0 +1,12 @@
+{% extends "_base.html" %}
+
+{% block title %}{{ profile_user.username }}'s Profile{% endblock title %}
+
+{% block content %}
+<p>{{ profile_user.username }}</p>
+<ul>
+  {% for pen in profile_user.pen_set.all %}
+  <li>{{ pen.name }}</li>
+  {% endfor %}
+</ul>
+{% endblock content %}
