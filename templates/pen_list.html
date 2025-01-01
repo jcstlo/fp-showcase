@@ -1,0 +1,12 @@
+{% extends "_base.html" %}
+
+{% block title %}{{ user.username }}'s pens{% endblock title %}
+
+{% block content %}
+<h2>Your pens</h2>
+<ul>
+  {% for pen in pen_list %}
+  <li>{{ pen.name }}</li>
+  {% endfor %}
+</ul>
+{% endblock content %}
