@@ -1,8 +1,10 @@
 {% extends "_base.html" %}
+{% load static %}
 
 {% block title %}{{ profile_user.username }}'s Profile{% endblock title %}
 
 {% block content %}
+<img class="profile-picture" src="{% static 'images/blank_user_pic.png' %}" alt="No profile picture set">
 <p>{{ profile_user.username }}</p>
 <ul>
   {% for pen in profile_user.pen_set.all %}
