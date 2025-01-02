@@ -1,6 +1,6 @@
-from django.views.generic.edit import CreateView
-from django.views.generic import ListView
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic import ListView, DetailView
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
 
 from .models import Pen
@@ -22,3 +22,14 @@ class PenListView(LoginRequiredMixin, ListView):
 
     def get_queryset(self):
         return Pen.objects.filter(owner=self.request.user)
+
+
+class PenUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = Pen
+    form_class = PenForm
+    template_name_suffix = "_update_form"
+    success_url = reverse_lazy("pen_list")
+
+    def test_func(self):
+        obj = self.get_object()
+        return obj.owner == self.request.user

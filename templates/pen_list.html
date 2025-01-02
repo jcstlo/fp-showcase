@@ -6,7 +6,7 @@
 <h2>Your pens</h2>
 <ul>
   {% for pen in pen_list %}
-  <li>{{ pen.name }}</li>
+  <li><a href="{% url 'update_pen' pen.id %}">{{ pen.name }}</a></li>
   {% endfor %}
 </ul>
 {% endblock content %}
