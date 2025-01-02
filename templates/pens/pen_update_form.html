@@ -8,6 +8,10 @@
 <form method="post">
   {% csrf_token %}
   {{ form|crispy }}
-  <button type="submit">Update</button>
+  <input type="submit" value="Update" />
+</form>
+<form action="{% url 'delete_pen' pen.id %}">
+  {% csrf_token %}
+  <input type="submit" value="Delete" />
 </form>
 {% endblock content %}
