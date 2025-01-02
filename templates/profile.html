@@ -6,7 +6,7 @@
 <p>{{ profile_user.username }}</p>
 <ul>
   {% for pen in profile_user.pen_set.all %}
-  <li>{{ pen.name }}</li>
+  <li><a href="{% url 'pen_detail' pen.id %}">{{ pen.name }}</a></li>
   {% endfor %}
 </ul>
 {% endblock content %}
