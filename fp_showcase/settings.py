@@ -142,3 +142,6 @@ CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 LOGIN_REDIRECT_URL = "home"
 LOGOUT_REDIRECT_URL = "home"
+
+MEDIA_URL = "/media/"  # URL to use in templates
+MEDIA_ROOT = BASE_DIR / "media"  # absolute file system path for user-uploaded files
