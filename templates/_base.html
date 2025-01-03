@@ -17,7 +17,7 @@
 
         {% if user.is_authenticated %}
         <ul class="nav nav-pills">
-          <p>{{ user.username }}&nbsp;|&nbsp;</p>
+          <p><a href="{% url 'settings' %}">{{ user.username }}</a>&nbsp;|&nbsp;</p>
         </ul>
         <ul class="nav nav-pills">
           <form action="{% url 'logout' %}" method="post">
