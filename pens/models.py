@@ -33,3 +33,7 @@ class PenImage(models.Model):
         upload_to=create_ulid_filename,
         blank=True,
     )
+
+    def __str__(self):
+        filename = self.image.url.split("/")[-1]
+        return filename

@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Pen
+from .models import Pen, PenImage
 
 
 class PenAdmin(admin.ModelAdmin):
@@ -11,3 +11,4 @@ class PenAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Pen, PenAdmin)
+admin.site.register(PenImage)

@@ -2,7 +2,7 @@ from django import forms
 from django.forms import ModelForm
 from django.utils.translation import gettext_lazy as _
 
-from .models import Pen
+from .models import Pen, PenImage
 
 
 class DateInput(forms.DateInput):
@@ -29,3 +29,19 @@ class PenForm(ModelForm):
         labels = {
             "creator": _("Brand/company/creator"),
         }
+
+
+class PenImageForm(ModelForm):
+    class Meta:
+        model = PenImage
+        fields = ("image",)
+
+    # use clean_image() with form_valid() instead of blank=False in the PenImage model,
+    # to allow users to create pens without requiring an image to be uploaded.
+    # If blank=False, the Django form will show the image form as 'required', which
+    # is not the intention
+    def clean_image(self):
+        image = self.cleaned_data.get("image")
+        if not image:
+            raise forms.ValidationError("An image is required.")
+        return image

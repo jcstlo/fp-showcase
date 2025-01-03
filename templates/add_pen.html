@@ -5,9 +5,10 @@
 
 {% block content %}
 <h2>Add a New Pen</h2>
-<form method="post">
+<form method="post" enctype="multipart/form-data">
   {% csrf_token %}
   {{ form|crispy }}
+  {{ pen_image_form|crispy}}
   <button type="submit">Add new Pen</button>
 </form>
 {% endblock content %}

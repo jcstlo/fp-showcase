@@ -56,4 +56,13 @@
   <p>n/a</p>
 {% endif %}
 
+<h3>Images</h3>
+{% if pen.penimage_set.count %}
+  {% for penimage in pen.penimage_set.all %}
+    <img src="{{ penimage.image.url }}" alt="Pen image">
+  {% endfor %}
+{% else %}
+<p>No images</p>
+{% endif %}
+
 {% endblock content %}
