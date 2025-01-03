@@ -25,6 +25,13 @@
             <button type="submit">Sign Out</button>
           </form>
         </ul>
+        {% else %}
+        <form action="{% url 'login' %}">
+          <input type="submit" value="Login" class="btn btn-outline-primary mx-2" />
+        </form>
+        <form action="{% url 'signup' %}">
+          <input type="submit" value="Sign up" class="btn btn-primary" />
+        </form>
         {% endif %}
       </header>
     </div>
