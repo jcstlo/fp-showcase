@@ -18,4 +18,5 @@ class CustomUserChangeForm(UserChangeForm):
         fields = (
             "username",
             "email",
+            "profile_picture",
         )
