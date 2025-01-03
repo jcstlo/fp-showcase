@@ -22,6 +22,7 @@ class PenForm(ModelForm):
             "purchase_location",
             "purchase_date",
             "favorite",
+            "main_image",
         )
         widgets = {
             "purchase_date": DateInput(),
