@@ -1,6 +1,7 @@
 import uuid
 from django.db import models
 from django.conf import settings
+from util.ulid import create_ulid_filename
 
 
 class Pen(models.Model):
@@ -19,6 +20,10 @@ class Pen(models.Model):
     description = models.CharField(max_length=300, blank=True)
     favorite = models.BooleanField(default=False)
     created_date = models.DateTimeField(auto_now_add=True)
+    main_image = models.ImageField(
+        upload_to=create_ulid_filename,
+        blank=True,
+    )
 
     def __str__(self):
         return self.name
