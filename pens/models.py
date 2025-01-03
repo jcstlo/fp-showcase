@@ -1,6 +1,8 @@
 import uuid
 from django.db import models
 from django.conf import settings
+from django.utils.translation import gettext_lazy as _
+from util.ulid import create_ulid_filename
 
 
 class Pen(models.Model):
@@ -22,3 +24,12 @@ class Pen(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class PenImage(models.Model):
+    pen = models.ForeignKey(Pen, on_delete=models.CASCADE)
+    image = models.ImageField(
+        _("pen image"),
+        upload_to=create_ulid_filename,
+        blank=True,
+    )
