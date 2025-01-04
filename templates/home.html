@@ -4,15 +4,39 @@
 
 {% block content %}
 {% if user.is_authenticated %}
-<h2>Homepage</h2>
-<p>Hello {{ user.username }}!</p>
-<p><a href="{% url 'add_pen' %}">Add a new pen</a></p>
-<p><a href="{% url 'profile' user.slug %}">Profile</a></p>
-<p><a href="{% url 'pen_list' %}">See list of pens</a></p>
-<form action="{% url 'logout' %}" method="post">
-  {% csrf_token %}
-  <button type="submit">Sign Out</button>
-</form>
+
+<h1>Hello {{ user.username }}!</h1>
+
+<div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+  <div class="col d-flex align-items-start">
+    <div>
+      <h3 class="fs-2 text-body-emphasis">Add a new pen</h3>
+      <p>Add a new pen to your collection.</p>
+      <a href="{% url 'add_pen' %}" class="btn btn-primary">
+        Add pen
+      </a>
+    </div>
+  </div>
+  <div class="col d-flex align-items-start">
+    <div>
+      <h3 class="fs-2 text-body-emphasis">Profile</h3>
+      <p>See your public-facing profile!</p>
+      <a href="{% url 'profile' user.slug %}" class="btn btn-primary">
+        View profile
+      </a>
+    </div>
+  </div>
+  <div class="col d-flex align-items-start">
+    <div>
+      <h3 class="fs-2 text-body-emphasis">Pen list</h3>
+      <p>View, edit, and delete pens from your collection.</p>
+      <a href="{% url 'pen_list' %}" class="btn btn-primary">
+        See list of pens
+      </a>
+    </div>
+  </div>
+</div>
+
 {% else %}
 <p><a href="{% url 'signup' %}">Sign Up</a></p>
 <p><a href="{% url 'login' %}">Log In</a></p>
