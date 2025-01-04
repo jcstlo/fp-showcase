@@ -20,9 +20,11 @@
 
           {% if user.is_authenticated %}
           <ul class="nav nav-pills mx-2">
-            <button type="button" class="btn btn-light">
-              <a href="{% url 'settings' %}" class="text-primary link-underline link-underline-opacity-0">Settings</a>
-            </button>
+            <a href="{% url 'settings' %}">
+              <button type="button" class="btn btn-outline-primary">
+                Settings
+              </button>
+            </a>
           </ul>
           <ul class="nav nav-pills">
             <form action="{% url 'logout' %}" method="post">
