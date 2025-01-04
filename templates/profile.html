@@ -4,13 +4,24 @@
 {% block title %}{{ profile_user.username }}'s Profile{% endblock title %}
 
 {% block content %}
-{% if profile_user.profile_picture %}
-<img class="profile-picture img-thumbnail" src="{{ profile_user.profile_picture.url }}" alt="Profile picture">
-{% else %}
-<img class="profile-picture img-thumbnail" src="{% static 'images/blank_user_pic.png' %}" alt="No profile picture set">
-{% endif %}
-<p>{{ profile_user.username }}</p>
 
+<h2>Profile</h2>
+<div class="d-flex">
+  <div class="p-3">
+    {% if profile_user.profile_picture %}
+      <img class="profile-picture img-thumbnail" src="{{ profile_user.profile_picture.url }}" alt="Profile picture">
+    {% else %}
+      <img class="profile-picture img-thumbnail" src="{% static 'images/blank_user_pic.png' %}" alt="No profile picture set">
+    {% endif %}
+    <p class="mt-2 mb-0 text-center">{{ profile_user.username }}</p>
+  </div>
+  <div class="flex-grow-1 p-3 d-flex flex-column justify-content-between">
+    <p class="my-0">PLACEHOLDER: Profile description</p>
+    <p class="my-0">PLACEHOLDER: User stats</p>
+  </div>
+</div>
+
+<h2>Pens</h2>
 <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-3">
   {% for pen in profile_user.pen_set.all %}
   <div class="col">
