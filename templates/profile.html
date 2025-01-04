@@ -5,14 +5,32 @@
 
 {% block content %}
 {% if profile_user.profile_picture %}
-<img class="profile-picture" src="{{ profile_user.profile_picture.url }}" alt="Profile picture">
+<img class="profile-picture img-thumbnail" src="{{ profile_user.profile_picture.url }}" alt="Profile picture">
 {% else %}
-<img class="profile-picture" src="{% static 'images/blank_user_pic.png' %}" alt="No profile picture set">
+<img class="profile-picture img-thumbnail" src="{% static 'images/blank_user_pic.png' %}" alt="No profile picture set">
 {% endif %}
 <p>{{ profile_user.username }}</p>
-<ul>
+
+<div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-3">
   {% for pen in profile_user.pen_set.all %}
-  <li><a href="{% url 'pen_detail' pen.id %}">{{ pen.name }}</a></li>
+  <div class="col">
+    <div class="card shadow-sm">
+      {% if pen.main_image %}
+      <img src="{{ pen.main_image.url }}" alt="Pen image" class="card-img-top" width="100%" height="250">
+      {% else %}
+      <svg class="bd-placeholder-img card-img-top" width="100%" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+        <title>Pen image</title>
+        <rect width="100%" height="100%" fill="#55595c"/>
+      </svg>
+      {% endif %}
+      <div class="card-body">
+        <a href="{% url 'pen_detail' pen.id %}">
+          <p class="card-text">{{ pen.name }}</p>
+        </a>
+      </div>
+    </div>
+  </div>
   {% endfor %}
-</ul>
+</div>
+
 {% endblock content %}
