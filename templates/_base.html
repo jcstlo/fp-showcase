@@ -19,13 +19,15 @@
           </a>
 
           {% if user.is_authenticated %}
-          <ul class="nav nav-pills">
-            <p><a href="{% url 'settings' %}">{{ user.username }}</a>&nbsp;|&nbsp;</p>
+          <ul class="nav nav-pills mx-2">
+            <button type="button" class="btn btn-light">
+              <a href="{% url 'settings' %}" class="text-primary link-underline link-underline-opacity-0">Settings</a>
+            </button>
           </ul>
           <ul class="nav nav-pills">
             <form action="{% url 'logout' %}" method="post">
               {% csrf_token %}
-              <button type="submit">Sign Out</button>
+              <button class="btn btn-primary" type="submit">Sign Out</button>
             </form>
           </ul>
           {% else %}
