@@ -14,9 +14,9 @@ class PenForm(ModelForm):
         model = Pen
         fields = (
             "name",
+            "creator",
             "description",
             "nib_size",
-            "creator",
             "color",
             "manufacture_year",
             "purchase_location",
@@ -28,5 +28,6 @@ class PenForm(ModelForm):
             "purchase_date": DateInput(),
         }
         labels = {
+            "name": _("Name/model"),
             "creator": _("Brand/company/creator"),
         }
