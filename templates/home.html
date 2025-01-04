@@ -1,4 +1,5 @@
 {% extends "_base.html" %}
+{% load static %}
 
 {% block title %}Home{% endblock title %}
 
@@ -38,7 +39,23 @@
 </div>
 
 {% else %}
-<p><a href="{% url 'signup' %}">Sign Up</a></p>
-<p><a href="{% url 'login' %}">Log In</a></p>
+<div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+  <div class="col-10 col-sm-8 col-lg-6">
+    <img src="{% static 'images/fountain_pen_homepage.jpg' %}" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+  </div>
+  <div class="col-lg-6">
+    <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Show your collection of fountain pens</h1>
+    <p class="lead">Record and share your pen collection with other pen enthusiasts in the Fountain Pen Showcase community!</p>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+      <a href="{% url 'signup' %}">
+        <button type="button" class="btn btn-primary btn-lg px-4 me-md-2">Sign Up</button>
+      </a>
+      <a href="{% url 'login' %}">
+        <button type="button" class="btn btn-outline-secondary btn-lg px-4">Log In</button>
+      </a>
+    </div>
+  </div>
+</div>
+
 {% endif %}
 {% endblock content %}
