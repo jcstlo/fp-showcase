@@ -1,0 +1,46 @@
+version: "3.9"
+
+# IMPORTANT: Copy the contents of this file to docker-compose-prod.yml
+#            then change the environment variables appropriately!
+
+services:
+  web:
+    build: .
+    expose:
+      - 8000
+    command: gunicorn fp_showcase.wsgi:application --bind 0.0.0.0:8000
+    volumes:
+      - .:/code
+      - static_volume:/code/staticfiles
+      - media_volume:/code/media
+    depends_on:
+      - db
+    environment:
+      - "DJANGO_SECRET_KEY=django-insecure-@k!m0yes_n)i@h(hr8wg##i&xf#vxkx+aid2!sv-h2)zv25=%$$"
+      - "DJANGO_DEBUG=True"
+      - "DJANGO_SECURE_SSL_REDIRECT=False"
+      - "DJANGO_SECURE_HSTS_SECONDS=0"
+      - "DJANGO_SECURE_HSTS_INCLUDE_SUBDOMAINS=False"
+      - "DJANGO_SECURE_HSTS_PRELOAD=False"
+      - "DJANGO_SESSION_COOKIE_SECURE=False"
+      - "DJANGO_CSRF_COOKIE_SECURE=False"
+  db:
+    image: postgres:17
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - "POSTGRES_HOST_AUTH_METHOD=trust"
+  nginx:
+    build: ./nginx
+    volumes:
+      - static_volume:/code/staticfiles
+      - media_volume:/code/media
+    ports:
+      - 80:80
+    depends_on:
+      - web
+
+volumes:
+  postgres_data:
+  static_volume:
+  media_volume:
