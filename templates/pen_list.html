@@ -4,9 +4,34 @@
 
 {% block content %}
 <h2>Your pens</h2>
-<ul>
-  {% for pen in pen_list %}
-  <li><a href="{% url 'update_pen' pen.id %}">{{ pen.name }}</a></li>
-  {% endfor %}
-</ul>
+<table class="table table-striped table-bordered">
+  <caption>
+    {% if pen_list|length != 1 %}
+      {{ pen_list|length }} pens
+    {% else %}
+      1 pen
+    {% endif %}
+  </caption>
+  <thead>
+    <th>Name/model</th>
+    <th>Brand/company/creator</th>
+    <th>Nib size</th>
+    <th>Favorite</th>
+  </thead>
+  <tbody>
+    {% for pen in pen_list %}
+    <tr>
+      <td><a href="{% url 'update_pen' pen.id %}">{{ pen.name }}</a></td>
+      <td>{{ pen.creator }}</td>
+      <td>{{ pen.nib_size }}</td>
+      <td>
+        {% if pen.favorite == True %}
+          Y
+        {% endif %}
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
 {% endblock content %}
