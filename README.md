@@ -10,3 +10,11 @@
 
 * `docker-compose up -d --build`
 * `docker-compose exec web python manage.py migrate`
+
+# Deployment steps
+
+* Create a `docker-compose-prod.yml` file
+  * Copy the contents from `docker-compose.yml` file and replace environment variables accordingly
+* Modify `fp_showcase/settings.py`
+  * Add your domain name to `ALLOWED_HOSTS` (e.g. `"fountainpenshowcase.com"`)
+* Run `docker-compose -f docker-compose-prod.yml up -d --build`
