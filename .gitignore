@@ -172,3 +172,6 @@ cython_debug/
 
 media/
 !media/.keep
+
+docker-compose-prod.yml
+docker-compose-demo.yml
