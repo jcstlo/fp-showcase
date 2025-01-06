@@ -39,15 +39,6 @@ services:
       - postgres_data:/var/lib/postgresql/data/
     environment:
       - "POSTGRES_HOST_AUTH_METHOD=trust"
-  nginx:
-    build: ./nginx
-    volumes:
-      - static_volume:/code/staticfiles
-      - media_volume:/code/media
-    ports:
-      - 80:80
-    depends_on:
-      - web
   nginx-proxy:
     container_name: nginx-proxy
     build: nginx
