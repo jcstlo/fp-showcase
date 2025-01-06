@@ -20,18 +20,15 @@ services:
       - db
     environment:
       - "DJANGO_SECRET_KEY=django-insecure-@k!m0yes_n)i@h(hr8wg##i&xf#vxkx+aid2!sv-h2)zv25=%$$"
-      - "DJANGO_DEBUG=True"
-      - "DJANGO_SECURE_SSL_REDIRECT=False"
-      - "DJANGO_SECURE_HSTS_SECONDS=0"
-      - "DJANGO_SECURE_HSTS_INCLUDE_SUBDOMAINS=False"
-      - "DJANGO_SECURE_HSTS_PRELOAD=False"
-      - "DJANGO_SESSION_COOKIE_SECURE=False"
-      - "DJANGO_CSRF_COOKIE_SECURE=False"
       - "DJANGO_SECURE_PROXY_SSL_HEADER=True"
-      - "DJANGO_ALLOWED_HOSTS=__REPLACE_ME__"
-      - "VIRTUAL_HOST=__REPLACE_ME__"
       - "VIRTUAL_PORT=8000"
+      # e.g. "DJANGO_ALLOWED_HOSTS=fountainpenshowcase.com" 
+      - "DJANGO_ALLOWED_HOSTS=__REPLACE_ME__"
+      # e.g. "VIRTUAL_HOST=fountainpenshowcase.com" 
+      - "VIRTUAL_HOST=__REPLACE_ME__"
+      # e.g. "LETSENCRYPT_HOST=fountainpenshowcase.com" 
       - "LETSENCRYPT_HOST=__REPLACE_ME__"
+      # e.g. "CSRF_TRUSTED_ORIGINS=https://fountainpenshowcase.com" 
       - "CSRF_TRUSTED_ORIGINS=__REPLACE_ME__"
   db:
     image: postgres:17
@@ -64,9 +61,12 @@ services:
       - vhost:/etc/nginx/vhost.d
       - acme:/etc/acme.sh
     environment:
-      - "DEFAULT_EMAIL=__REPLACE_ME__"
-      - "ACME_CA_URI=https://acme-staging-v02.api.letsencrypt.org/directory"
       - "NGINX_PROXY_CONTAINER=nginx-proxy"
+      # e.g. "DEFAULT_EMAIL=someuser@email.com"
+      - "DEFAULT_EMAIL=__REPLACE_ME__"
+      # comment out ACME_CA_URI when you want to use Let's Encrypt's production environment
+      # see README.md for more details
+      - "ACME_CA_URI=https://acme-staging-v02.api.letsencrypt.org/directory"
     depends_on:
       - nginx-proxy
 volumes:
