@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     # 3rd party
     "crispy_forms",
     "crispy_bootstrap5",
+    "storages",
     # local
     "accounts.apps.AccountsConfig",
     "pens.apps.PensConfig",
@@ -138,6 +139,9 @@ STATICFILES_DIRS = [BASE_DIR / "static"]
 STATIC_ROOT = BASE_DIR / "staticfiles"
 STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFilesStorage"
 
+MEDIA_URL = "/media/"  # URL to use in templates
+MEDIA_ROOT = BASE_DIR / "media"  # absolute file system path for user-uploaded files
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
@@ -150,9 +154,6 @@ CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 LOGIN_REDIRECT_URL = "home"
 LOGOUT_REDIRECT_URL = "home"
-
-MEDIA_URL = "/media/"  # URL to use in templates
-MEDIA_ROOT = BASE_DIR / "media"  # absolute file system path for user-uploaded files
 
 SECURE_SSL_REDIRECT = env.bool("DJANGO_SECURE_SSL_REDIRECT", default=True)
 
