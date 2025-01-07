@@ -5,6 +5,8 @@ version: "3.9"
 #            appropriately!
 
 # NOTE: Lines with __REPLACE_ME__ need to be replaced appropriately.
+#       If using Amazon S3 for user-uploaded images, set DJANGO_USE_S3 to True.
+#       Otherwise, images will be stored in a local Docker volume (media_volume).
 
 services:
   web:
@@ -30,6 +32,13 @@ services:
       - "LETSENCRYPT_HOST=__REPLACE_ME__"
       # e.g. "CSRF_TRUSTED_ORIGINS=https://fountainpenshowcase.com" 
       - "CSRF_TRUSTED_ORIGINS=__REPLACE_ME__"
+      - "DJANGO_USE_S3=False"
+      # only replace AWS_ACCESS_KEY_ID if DJANGO_USE_S3 = True
+      - "AWS_ACCESS_KEY_ID=__REPLACE_ME__"
+      # only replace AWS_SECRET_ACCESS_KEY if DJANGO_USE_S3 = True
+      - "AWS_SECRET_ACCESS_KEY=__REPLACE_ME__"
+      # only replace AWS_STORAGE_BUCKET_NAME if DJANGO_USE_S3 = True
+      - "AWS_STORAGE_BUCKET_NAME=__REPLACE_ME__"
   db:
     image: postgres:17
     volumes:

@@ -175,3 +175,4 @@ media/
 
 docker-compose-prod.yml
 docker-compose-demo.yml
+docker-compose-local-s3.yml
