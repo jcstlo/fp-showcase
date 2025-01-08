@@ -32,6 +32,7 @@ services:
       - "LETSENCRYPT_HOST=__REPLACE_ME__"
       # e.g. "CSRF_TRUSTED_ORIGINS=https://fountainpenshowcase.com" 
       - "CSRF_TRUSTED_ORIGINS=__REPLACE_ME__"
+      # set DJANGO_USE_S3 to True to store user-uploaded images to an existing S3 bucket
       - "DJANGO_USE_S3=False"
       # only replace AWS_ACCESS_KEY_ID if DJANGO_USE_S3 = True
       - "AWS_ACCESS_KEY_ID=__REPLACE_ME__"
@@ -39,6 +40,8 @@ services:
       - "AWS_SECRET_ACCESS_KEY=__REPLACE_ME__"
       # only replace AWS_STORAGE_BUCKET_NAME if DJANGO_USE_S3 = True
       - "AWS_STORAGE_BUCKET_NAME=__REPLACE_ME__"
+      # set DJANGO_FPS_DEMO = True if you want to disable AWS S3 and add a demo notice button to the header
+      - "DJANGO_FPS_DEMO=False"
   db:
     image: postgres:17
     volumes:

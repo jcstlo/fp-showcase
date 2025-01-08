@@ -5,15 +5,21 @@ from django.views.generic import CreateView, UpdateView
 from django.contrib.auth import get_user_model
 from django.utils.translation import gettext as _
 from django.http import Http404
+from django.contrib.auth.views import LoginView
+from fp_showcase.mixins import DemoMixin
 
 
-class SignUpView(CreateView):
+class SignUpView(DemoMixin, CreateView):
     form_class = CustomUserCreationForm
     success_url = reverse_lazy("login")
     template_name = "registration/signup.html"
 
 
-class UserUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+class CustomLoginView(DemoMixin, LoginView):
+    pass
+
+
+class UserUpdateView(DemoMixin, LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = get_user_model()
     fields = [
         "profile_picture",

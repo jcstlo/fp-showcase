@@ -5,9 +5,10 @@ from django.urls import reverse_lazy
 
 from .models import Pen
 from .forms import PenForm
+from fp_showcase.mixins import DemoMixin
 
 
-class AddPenView(LoginRequiredMixin, CreateView):
+class AddPenView(DemoMixin, LoginRequiredMixin, CreateView):
     template_name = "add_pen.html"
     form_class = PenForm
     success_url = reverse_lazy("home")
@@ -17,19 +18,19 @@ class AddPenView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
-class PenListView(LoginRequiredMixin, ListView):
+class PenListView(DemoMixin, LoginRequiredMixin, ListView):
     template_name = "pen_list.html"
 
     def get_queryset(self):
         return Pen.objects.filter(owner=self.request.user)
 
 
-class PenDetailView(LoginRequiredMixin, DetailView):
+class PenDetailView(DemoMixin, LoginRequiredMixin, DetailView):
     model = Pen
     context_object_name = "pen"
 
 
-class PenUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+class PenUpdateView(DemoMixin, LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Pen
     form_class = PenForm
     template_name_suffix = "_update_form"
@@ -40,7 +41,7 @@ class PenUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         return obj.owner == self.request.user
 
 
-class PenDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+class PenDeleteView(DemoMixin, LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Pen
     success_url = reverse_lazy("pen_list")
 

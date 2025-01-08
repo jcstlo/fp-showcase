@@ -13,32 +13,55 @@
 
       <div class="container">
         <!-- HEADER -->
-        <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-          <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-            <span class="fs-4">Fountain Pen Showcase</span>
-          </a>
+        <header class="d-flex flex-wrap justify-content-between py-3 mb-4 border-bottom">
+          <div class="nav nav-pills">
+            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-0 link-body-emphasis text-decoration-none">
+              <span class="fs-4 mx-1">Fountain Pen Showcase</span>
+            </a>
+            {% if fps_demo %}
+            <button type="button" class="btn btn-outline-danger mx-1" data-bs-toggle="modal" data-bs-target="#demoNoticeModal">
+              Demo Notice
+            </button>
+            <div class="modal fade" id="demoNoticeModal" tabindex="-1" aria-labelledby="demoNoticeLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="demoNoticeLabel">Demo Notice</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <p>This is the demo version of Fountain Pen Showcase.</p>
+                    <p>Feel free to sign up (no email verification), create pens, upload images, and view other user profiles!</p>
+                    <p>Note that in the demo version, AWS S3 is disabled and all user data (including images) is only saved onto a Docker volume.</p>
+                    <p class="fw-bold">I may choose to delete all existing user data at any time.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% endif %}
+          </div>
 
           {% if user.is_authenticated %}
-          <ul class="nav nav-pills mx-2">
+          <div class="nav nav-pills">
             <a href="{% url 'settings' %}">
-              <button type="button" class="btn btn-outline-primary">
+              <button type="button" class="btn btn-outline-primary mx-1">
                 Settings
               </button>
             </a>
-          </ul>
-          <ul class="nav nav-pills">
             <form action="{% url 'logout' %}" method="post">
               {% csrf_token %}
-              <button class="btn btn-primary" type="submit">Sign Out</button>
+              <button class="btn btn-primary mx-1" type="submit">Sign Out</button>
             </form>
-          </ul>
+          </div>
           {% else %}
-          <form action="{% url 'login' %}">
-            <input type="submit" value="Login" class="btn btn-outline-primary mx-2" />
-          </form>
-          <form action="{% url 'signup' %}">
-            <input type="submit" value="Sign up" class="btn btn-primary" />
-          </form>
+          <div class="nav nav-pills">
+            <form action="{% url 'login' %}">
+              <input type="submit" value="Login" class="btn btn-outline-primary mx-1" />
+            </form>
+            <form action="{% url 'signup' %}">
+              <input type="submit" value="Sign up" class="btn btn-primary mx-1" />
+            </form>
+          </div>
           {% endif %}
         </header>
       </div>

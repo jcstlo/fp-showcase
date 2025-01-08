@@ -135,8 +135,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 USE_S3 = env.bool("DJANGO_USE_S3", default=False)
+FPS_DEMO = env.bool("DJANGO_FPS_DEMO", default=False)
 
-if USE_S3:
+if USE_S3 and not FPS_DEMO:
     AWS_ACCESS_KEY_ID = env.str("AWS_ACCESS_KEY_ID", default="")
     AWS_SECRET_ACCESS_KEY = env.str("AWS_SECRET_ACCESS_KEY", default="")
     AWS_STORAGE_BUCKET_NAME = env.str("AWS_STORAGE_BUCKET_NAME", default="")
