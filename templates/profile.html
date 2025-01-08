@@ -13,20 +13,20 @@
     {% else %}
       <img class="profile-picture img-thumbnail" src="{% static 'images/blank_user_pic.png' %}" alt="No profile picture set">
     {% endif %}
-    <p class="mt-2 mb-0 text-center">{{ profile_user.username }}</p>
+    <p class="mt-2 mb-0 text-center fs-4">{{ profile_user.username }}</p>
   </div>
   <div class="flex-grow-1 p-3 d-flex flex-column justify-content-between">
     <div class="my-0 multiline">{{ profile_user.profile_description }}</div>
     <div class="d-flex">
       {% if profile_user.pen_set.all|length == 1 %}
-        <p class="my-0 mx-2">1 total pen</p>
+        <p class="my-0 mx-2 text-secondary">1 total pen</p>
       {% else %}
-        <p class="my-0 mx-2">{{ profile_user.pen_set.all|length }} total pens</p>
+        <p class="my-0 mx-2 text-secondary">{{ profile_user.pen_set.all|length }} total pens</p>
       {% endif %}
       <div class="vr"></div>
-      <p class="my-0 mx-2">Joined {{ profile_user.date_joined }}</p>
+      <p class="my-0 mx-2 text-secondary">Joined: {{ profile_user.date_joined }} (UTC)</p>
       <div class="vr"></div>
-      <p class="my-0 mx-2">Last seen {{ profile_user.last_login }}</p>
+      <p class="my-0 mx-2 text-secondary">Last seen: {{ profile_user.last_login }} (UTC)</p>
     </div>
   </div>
 </div>
