@@ -20,8 +20,10 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
+custom_admin_path = settings.CUSTOM_ADMIN_PATH
+
 urlpatterns = [
-    path("admin/", admin.site.urls),
+    path(f"{custom_admin_path}/", admin.site.urls),
     path("accounts/", include("accounts.urls")),
     path("accounts/", include("django.contrib.auth.urls")),
     path("pens/", include("pens.urls")),

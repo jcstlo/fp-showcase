@@ -20,6 +20,7 @@ services:
       - "DJANGO_CSRF_COOKIE_SECURE=False"
       - "DJANGO_FPS_DEMO=False"
       - "DJANGO_FPS_DEMO_PROFILE=__REPLACE_ME__"
+      - "DJANGO_CUSTOM_ADMIN_PATH=admin"
   db:
     image: postgres:17
     volumes:

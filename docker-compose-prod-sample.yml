@@ -44,6 +44,8 @@ services:
       - "DJANGO_FPS_DEMO=False"
       # only replace with existing profile username if DJANGO_FPS_DEMO = True
       - "DJANGO_FPS_DEMO_PROFILE=__REPLACE_ME__"
+      # replace admin path with something safer, e.g. "DJANGO_CUSTOM_ADMIN_PATH=anythingbutadmin"
+      - "DJANGO_CUSTOM_ADMIN_PATH=__REPLACE_ME__"
   db:
     image: postgres:17
     volumes:
