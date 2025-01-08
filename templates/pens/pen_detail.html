@@ -6,55 +6,47 @@
 {% block content %}
 <h2>{{ pen.name }}</h2>
 <a href="{% url 'profile' pen.owner.slug %}">Back to {{ pen.owner }}'s profile</a>
-
-<h4>Description:</h4>
-{% if pen.description %}
-  <p>{{ pen.description }}</p>
-{% else %}
-  <p>n/a</p>
-{% endif %}
-
-<h4>Nib size:</h4>
-{% if pen.nib_size %}
-  <p>{{ pen.nib_size }}</p>
-{% else %}
-  <p>n/a</p>
-{% endif %}
-
-<h4>Brand/company/creator:</h4>
-{% if pen.creator %}
-  <p>{{ pen.creator }}</p>
-{% else %}
-  <p>n/a</p>
-{% endif %}
-
-<h4>Color:</h4>
-{% if pen.color %}
-  <p>{{ pen.color }}</p>
-{% else %}
-  <p>n/a</p>
-{% endif %}
-
-<h4>Manufacture year:</h4>
-{% if pen.manufacture_year %}
-  <p>{{ pen.manufacture_year }}</p>
-{% else %}
-  <p>n/a</p>
-{% endif %}
-
-<h4>Purchase location:</h4>
-{% if pen.purchase_location %}
-  <p>{{ pen.purchase_location }}</p>
-{% else %}
-  <p>n/a</p>
-{% endif %}
-
-<h4>Purchase date:</h4>
-{% if pen.purchase_date %}
-  <p>{{ pen.purchase_date }}</p>
-{% else %}
-  <p>n/a</p>
-{% endif %}
+<br></br>
+<table class="table table-striped table-bordered">
+  <tbody>
+    <tr>
+      <th>Name/model</th>
+      <td>{{ pen.name }}</td>
+    </tr>
+    <tr>
+      <th>Description</th>
+      <td>{{ pen.description }}</td>
+    </tr>
+    <tr>
+      <th>Nib size</th>
+      <td>{{ pen.nib_size }}</td>
+    </tr>
+    <tr>
+      <th>Brand/company/creator</th>
+      <td>{{ pen.creator }}</td>
+    </tr>
+    <tr>
+      <th>Color</th>
+      <td>{{ pen.color }}</td>
+    </tr>
+    <tr>
+      <th>Manufacture year</th>
+      {% if pen.manufacture_year %}
+      <td>{{ pen.manufacture_year }}</td>
+      {% endif %}
+    </tr>
+    <tr>
+      <th>Purchase location</th>
+      <td>{{ pen.purchase_location }}</td>
+    </tr>
+    <tr>
+      <th>Purchase date</th>
+      {% if pen.purchase_date %}
+      <td>{{ pen.purchase_date }}</td>
+      {% endif %}
+    </tr>
+  </tbody>
+</table>
 
 <h3>Images</h3>
 {% if pen.main_image %}
