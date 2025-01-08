@@ -22,6 +22,7 @@ class CustomLoginView(DemoMixin, LoginView):
 class UserUpdateView(DemoMixin, LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = get_user_model()
     fields = [
+        "profile_description",
         "profile_picture",
     ]
     template_name = "profile_settings.html"

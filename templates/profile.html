@@ -16,8 +16,12 @@
     <p class="mt-2 mb-0 text-center">{{ profile_user.username }}</p>
   </div>
   <div class="flex-grow-1 p-3 d-flex flex-column justify-content-between">
-    <p class="my-0">PLACEHOLDER: Profile description</p>
-    <p class="my-0">PLACEHOLDER: User stats</p>
+    <div class="my-0 multiline">{{ profile_user.profile_description }}</div>
+    {% if profile_user.pen_set.all|length == 1 %}
+      <p class="my-0">1 total pen</p>
+    {% else %}
+      <p class="my-0">{{ profile_user.pen_set.all|length }} total pens</p>
+    {% endif %}
   </div>
 </div>
 
