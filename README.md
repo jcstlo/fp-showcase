@@ -1,16 +1,25 @@
-# Docker Commands
+# Fountain Pen Showcase
 
-* Start container: `docker-compose up -d`
-  * To force building a new image, add the `--build` flag (e.g. if you change `requirements.txt`)
-* Stop container: `docker-compose down`
-* To run commands within the Docker container: `docker-compose exec [service_name] [command]`
-  * e.g. `docker-compose exec web python manage.py test`
+Fountain Pen Showcase is a web app where fountain pen enthusiasts can upload and share their pen collection. Users can sign up, add information and an image for each fountain pen they own, then share their public profile with others using a unique link. Users can also customize their profile picture and profile description.
 
-# First start up
+User profiles are public and do not require sign-up (e.g. [https://fountainpenshowcase.com/profile/jcstlo/](https://fountainpenshowcase.com/profile/jcstlo/)). Clicking on a specific pen will show more information, but login is required.
+
+![image](static/images/readme.jpg)
+
+# Technical Details
+
+* Full-stack app built in Python with Django
+* Frontend is styled with Bootstrap 5
+* User data is stored in PostgreSQL, using Django ORM
+* User-uploaded images are stored in Amazon S3
+* Uses Docker to configure and deploy different environments (local, demo, production)
+* Deployed on DigitalOcean VPS with Gunicorn and nginx, with SSL/TLS
+
+# First start up (local development)
 
 * `docker-compose up -d --build`
 * `docker-compose exec web python manage.py migrate`
-* `docker-compose exec web python manage.py createsuperuser`
+* `docker-compose exec web python manage.py createsuperuser` (for admin use)
 
 # Production deployment steps (with HTTPS)
 
@@ -32,6 +41,7 @@
     * Click on "Advanced" and then on "Proceed"
   * Try creating a new user, uploading a picture, and checking if static assets load properly
 * Once the step above is confirmed, you can now switch to Let's Encrypt's production environment
+  * NOTE: Let's Encrypt has [rate limits](https://letsencrypt.org/docs/rate-limits/) that you should be aware of.
   * Run `docker compose -f docker-compose-prod.yml down`
   * Run `docker volume prune -a`
   * Comment out the line with `ACME_CA_URI` in `docker-compose-prod.yml`
