@@ -6,7 +6,7 @@
 {% block content %}
 {% if user.is_authenticated %}
 
-<h1>Hello {{ user.username }}!</h1>
+<h1>Hello, <span class="text-muted">{{ user.username }}</span>!</h1>
 
 <div class="my-0 row g-4 py-5 row-cols-1 row-cols-lg-3">
   <div class="col d-flex align-items-start">
@@ -22,7 +22,7 @@
     <div>
       <h3 class="fs-2 text-body-emphasis">Profile</h3>
       <p>See your public-facing profile!</p>
-      <a href="{% url 'profile' user.slug %}" class="btn btn-primary">
+      <a href="{% url 'profile' user.slug %}" class="btn btn-primary specific-btn">
         View profile
       </a>
     </div>
