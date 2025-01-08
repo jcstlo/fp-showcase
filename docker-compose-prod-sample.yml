@@ -21,7 +21,8 @@ services:
     depends_on:
       - db
     environment:
-      - "DJANGO_SECRET_KEY=django-insecure-@k!m0yes_n)i@h(hr8wg##i&xf#vxkx+aid2!sv-h2)zv25=%$$"
+      # in a Python REPL, run "import secrets; print(secrets.token_urlsafe(38))" to generate a value for DJANGO_SECRET_KEY
+      - "DJANGO_SECRET_KEY=__REPLACE_ME__"
       - "DJANGO_SECURE_PROXY_SSL_HEADER=True"
       - "VIRTUAL_PORT=8000"
       # e.g. "DJANGO_ALLOWED_HOSTS=fountainpenshowcase.com" 
