@@ -13,3 +13,9 @@ body {
     font-weight: 500;
     font-style: normal;
 }
+
+.site-logo {
+    font-family: "Merriweather", serif;
+    font-weight: 900;
+    font-style: normal;
+}

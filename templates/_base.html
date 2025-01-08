@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@900&display=swap" rel="stylesheet">
   </head>
   <body class="d-flex flex-column h-100">
     <main class="flex-shrink-0 mb-3">
@@ -19,7 +20,7 @@
         <header class="d-flex flex-wrap justify-content-between py-3 mb-4 border-bottom">
           <div class="nav nav-pills">
             <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-0 link-body-emphasis text-decoration-none">
-              <span class="fs-4 mx-1">Fountain Pen Showcase</span>
+              <span class="fs-4 mx-1 site-logo">Fountain Pen Showcase</span>
             </a>
             {% if fps_demo %}
             <button type="button" class="btn btn-outline-danger mx-1" data-bs-toggle="modal" data-bs-target="#demoNoticeModal">
@@ -46,6 +47,11 @@
 
           {% if user.is_authenticated %}
           <div class="nav nav-pills">
+            <div class="d-flex justify-content-center align-items-center">
+              <a href="{% url 'home' %}">
+                <img src="{% static 'images/house.svg' %}" width="25" height="25" class="mx-2">
+              </a>
+            </div>
             <a href="{% url 'settings' %}">
               <button type="button" class="btn btn-outline-primary mx-1">
                 Settings
