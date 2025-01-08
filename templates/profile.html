@@ -25,7 +25,7 @@
       {% if profile_user.pen_set.all|length == 1 %}
         <p class="my-0 me-2 text-secondary">1 total pen</p>
       {% else %}
-        <p class="my-0 mx-2 text-secondary">{{ profile_user.pen_set.all|length }} total pens</p>
+        <p class="my-0 me-2 text-secondary">{{ profile_user.pen_set.all|length }} total pens</p>
       {% endif %}
       <div class="vr"></div>
       <p class="my-0 mx-2 text-secondary">Joined: {{ profile_user.date_joined }} (UTC)</p>

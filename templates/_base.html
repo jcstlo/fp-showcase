@@ -48,31 +48,31 @@
           <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo01">
             <ul class="navbar-nav">
               {% if user.is_authenticated %}
-              <div class="d-flex align-items-center">
+              <div class="d-flex align-items-center justify-content-end">
               <li class="nav-item">
                   <a href="{% url 'home' %}" class="nav-link">
                     <img src="{% static 'images/house.svg' %}" width="25" height="25">
                   </a>
                 </li>
               </div>
-              <li class="nav-item">
+              <li class="nav-item d-flex justify-content-end">
                 <a href="{% url 'settings' %}" class="nav-link">
                   <button class="btn btn-outline-primary">Settings</button>
                 </a>
               </li>
-              <li class="nav-item">
+              <li class="nav-item d-flex justify-content-end">
                 <form action="{% url 'logout' %}" method="post" class="nav-link">
                   {% csrf_token %}
                   <button class="btn btn-primary">Sign Out</button>
                 </form>
               </li>
               {% else %}
-              <li class="nav-item">
+              <li class="nav-item d-flex justify-content-end">
                 <a href="{% url 'login' %}" class="nav-link">
                   <button class="btn btn-outline-primary">Login</button>
                 </a>
               </li>
-              <li class="nav-item">
+              <li class="nav-item d-flex justify-content-end">
                 <a href="{% url 'signup' %}" class="nav-link">
                   <button class="btn btn-primary">Sign up</button>
                 </a>
