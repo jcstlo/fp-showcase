@@ -15,6 +15,7 @@
   <thead>
     <th>Name/model</th>
     <th>Brand/company/creator</th>
+    <th>Color</th>
     <th>Nib size</th>
     <th>Favorite</th>
   </thead>
@@ -23,6 +24,7 @@
     <tr>
       <td><a href="{% url 'update_pen' pen.id %}">{{ pen.name }}</a></td>
       <td>{{ pen.creator }}</td>
+      <td>{{ pen.color }}</td>
       <td>{{ pen.nib_size }}</td>
       <td>
         {% if pen.favorite == True %}
