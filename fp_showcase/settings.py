@@ -136,6 +136,7 @@ USE_TZ = True
 
 USE_S3 = env.bool("DJANGO_USE_S3", default=False)
 FPS_DEMO = env.bool("DJANGO_FPS_DEMO", default=False)
+FPS_DEMO_PROFILE = env.str("DJANGO_FPS_DEMO_PROFILE", default="")
 
 if USE_S3 and not FPS_DEMO:
     AWS_ACCESS_KEY_ID = env.str("AWS_ACCESS_KEY_ID", default="")

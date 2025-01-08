@@ -37,6 +37,9 @@
                     <p>Feel free to sign up (no email verification), create pens, upload images, and view other user profiles!</p>
                     <p>Note that in the demo version, AWS S3 is disabled and all user data (including images) is only saved onto a Docker volume.</p>
                     <p class="fw-bold">I may choose to delete all existing user data at any time.</p>
+                    {% if fps_demo_profile %}
+                      <p>Take a look at my profile: <a href="{% url 'profile' fps_demo_profile %}">{{ fps_demo_profile }}</a></p>
+                    {% endif %}
                   </div>
                 </div>
               </div>

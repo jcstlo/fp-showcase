@@ -42,6 +42,8 @@ services:
       - "AWS_STORAGE_BUCKET_NAME=__REPLACE_ME__"
       # set DJANGO_FPS_DEMO = True if you want to disable AWS S3 and add a demo notice button to the header
       - "DJANGO_FPS_DEMO=False"
+      # only replace with existing profile username if DJANGO_FPS_DEMO = True
+      - "DJANGO_FPS_DEMO_PROFILE=__REPLACE_ME__"
   db:
     image: postgres:17
     volumes:
