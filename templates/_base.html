@@ -13,77 +13,88 @@
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@900&display=swap" rel="stylesheet">
   </head>
   <body class="d-flex flex-column h-100">
-    <main class="flex-shrink-0 mb-3">
 
-        <!-- HEADER -->
-      <header class="py-3 mb-4 border-bottom bg-light">
-        <div class="container d-flex flex-wrap justify-content-between">
-          <div class="nav nav-pills">
-              <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-0 link-body-emphasis text-decoration-none">
-                <span class="fs-4 mx-1 site-logo">Fountain Pen Showcase</span>
-              </a>
-              {% if fps_demo %}
-              <button type="button" class="btn btn-outline-danger mx-1" data-bs-toggle="modal" data-bs-target="#demoNoticeModal">
-                Demo Notice
-              </button>
-              <div class="modal fade" id="demoNoticeModal" tabindex="-1" aria-labelledby="demoNoticeLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h1 class="modal-title fs-5" id="demoNoticeLabel">Demo Notice</h1>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                      <p>This is the demo version of Fountain Pen Showcase.</p>
-                      <p>Feel free to sign up (no email verification), create pens, upload images, and view other user profiles!</p>
-                      <p>Note that in the demo version, AWS S3 is disabled and all user data (including images) is only saved onto a Docker volume.</p>
-                      <p class="fw-bold">I may choose to delete all existing user data at any time.</p>
-                    </div>
+    <!-- HEADER START -->
+    <header class="border-bottom bg-light mb-4">
+      <nav class="navbar navbar-expand-lg container">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="{% url 'home' %}">
+            <span class="fs-4 site-logo">
+              Fountain Pen Showcase
+            </span>
+          </a>
+          {% if fps_demo %}
+            <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#demoNoticeModal">Demo Notice</button>
+            <div class="modal fade" id="demoNoticeModal" tabindex="-1" aria-labelledby="demoNoticeLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="demoNoticeLabel">Demo Notice</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <p>This is the demo version of Fountain Pen Showcase.</p>
+                    <p>Feel free to sign up (no email verification), create pens, upload images, and view other user profiles!</p>
+                    <p>Note that in the demo version, AWS S3 is disabled and all user data (including images) is only saved onto a Docker volume.</p>
+                    <p class="fw-bold">I may choose to delete all existing user data at any time.</p>
                   </div>
                 </div>
               </div>
-              {% endif %}
             </div>
-
-            {% if user.is_authenticated %}
-            <div class="nav nav-pills">
-              <div class="d-flex justify-content-center align-items-center">
-                <a href="{% url 'home' %}">
-                  <img src="{% static 'images/house.svg' %}" width="25" height="25" class="mx-2">
-                </a>
+          {% endif %}
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo01">
+            <ul class="navbar-nav">
+              {% if user.is_authenticated %}
+              <div class="d-flex align-items-center">
+              <li class="nav-item">
+                  <a href="{% url 'home' %}" class="nav-link">
+                    <img src="{% static 'images/house.svg' %}" width="25" height="25">
+                  </a>
+                </li>
               </div>
-              <a href="{% url 'settings' %}">
-                <button type="button" class="btn btn-outline-primary mx-1">
-                  Settings
-                </button>
-              </a>
-              <form action="{% url 'logout' %}" method="post">
-                {% csrf_token %}
-                <button class="btn btn-primary mx-1" type="submit">Sign Out</button>
-              </form>
-            </div>
-            {% else %}
-            <div class="nav nav-pills">
-              <form action="{% url 'login' %}">
-                <input type="submit" value="Login" class="btn btn-outline-primary mx-1" />
-              </form>
-              <form action="{% url 'signup' %}">
-                <input type="submit" value="Sign up" class="btn btn-primary mx-1" />
-              </form>
-            </div>
-            {% endif %}
+              <li class="nav-item">
+                <a href="{% url 'settings' %}" class="nav-link">
+                  <button class="btn btn-outline-primary">Settings</button>
+                </a>
+              </li>
+              <li class="nav-item">
+                <form action="{% url 'logout' %}" method="post" class="nav-link">
+                  {% csrf_token %}
+                  <button class="btn btn-primary">Sign Out</button>
+                </form>
+              </li>
+              {% else %}
+              <li class="nav-item">
+                <a href="{% url 'login' %}" class="nav-link">
+                  <button class="btn btn-outline-primary">Login</button>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'signup' %}" class="nav-link">
+                  <button class="btn btn-primary">Sign up</button>
+                </a>
+              </li>
+              {% endif %}
+            </ul>
           </div>
-        </header>
+        </div>
+      </nav>
+    </header>
+    <!-- HEADER END -->
 
-      <!-- MAIN CONTENT -->
+    <!-- MAIN CONTENT START -->
+    <main class="flex-shrink-0 mb-3">
       <div class="container">
         {% block content %}
         {% endblock content %}
       </div>
-
     </main>
+    <!-- MAIN CONTENT END -->
 
-    <!-- FOOTER -->
+    <!-- FOOTER START -->
       <footer class="footer py-3 border-top bg-light mt-auto">
         <div class="container d-flex flex-wrap justify-content-between align-items-center">
           <div class="col-md-4 d-flex align-items-center">
@@ -99,6 +110,7 @@
           </ul>
         </div>
       </footer>
+    <!-- FOOTER END -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </body>
