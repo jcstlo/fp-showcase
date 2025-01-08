@@ -1,4 +1,5 @@
 {% extends "_base.html" %}
+{% load static %}
 
 {% block title %}{{ user.username }}'s pens{% endblock title %}
 
@@ -28,7 +29,7 @@
       <td>{{ pen.nib_size }}</td>
       <td>
         {% if pen.favorite == True %}
-          Y
+        <img src="{% static 'images/star.svg' %}" width="20" height="20">
         {% endif %}
       </td>
     </tr>

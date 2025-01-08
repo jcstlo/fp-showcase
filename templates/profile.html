@@ -42,9 +42,14 @@
       <img src="{% static 'images/fountain_pen_placeholder_image.jpg' %}" alt="Pen image" class="card-img-top" width="100%" height="250">
       {% endif %}
       <div class="card-body">
-        <a href="{% url 'pen_detail' pen.id %}">
-          <p class="card-text">{{ pen.name }}</p>
-        </a>
+        <div class="d-flex">
+          <a href="{% url 'pen_detail' pen.id %}">
+            <p class="card-text">{{ pen.name }}</p>
+          </a>
+          {% if pen.favorite %}
+          <img src="{% static 'images/star.svg' %}" width="20" height="20" class="mx-2">
+          {% endif %}
+        </div>
       </div>
     </div>
   </div>
