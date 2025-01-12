@@ -2,7 +2,7 @@
 
 Fountain Pen Showcase is a web app where fountain pen enthusiasts can upload and share their pen collection. Users can sign up, add information and an image for each fountain pen they own, then share their public profile with others using a unique link. Users can also customize their profile picture and profile description.
 
-User profiles are public and do not require sign-up (e.g. [https://fountainpenshowcase.com/profile/jcstlo/](https://fountainpenshowcase.com/profile/jcstlo/)). Clicking on a specific pen will show more information, but login is required.
+User profiles are public and do not require sign-up (e.g. [https://fountainpenshowcase.com/profile/jcstlo/](https://fountainpenshowcase.com/profile/jcstlo/)). Clicking on a specific pen will show more information.
 
 ![image](static/images/readme.jpg)
 

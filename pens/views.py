@@ -25,7 +25,7 @@ class PenListView(DemoMixin, LoginRequiredMixin, ListView):
         return Pen.objects.filter(owner=self.request.user)
 
 
-class PenDetailView(DemoMixin, LoginRequiredMixin, DetailView):
+class PenDetailView(DemoMixin, DetailView):
     model = Pen
     context_object_name = "pen"
 
