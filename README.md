@@ -17,9 +17,10 @@ User profiles are public and do not require sign-up (e.g. [https://fountainpensh
 
 # First start up (local development)
 
-* `docker-compose up -d --build`
-* `docker-compose exec web python manage.py migrate`
-* `docker-compose exec web python manage.py createsuperuser` (for admin use)
+* `docker compose up -d --build`
+* `docker compose exec web python manage.py migrate`
+* `docker compose exec web python manage.py createsuperuser` (for admin use)
+* `docker compose exec web python manage.py test` (for running tests)
 
 # Production deployment steps (with HTTPS)
 
